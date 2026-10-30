@@ -1,15 +1,19 @@
 import { useState } from "react";
 
-
-
-
-function App() {
-  function Notatka({ nazwa, status }: Notatki) {
+function setTasks( notatki: Notatki[],nazwa1:string,status1:boolean){
+notatki.push({
+    nazwa: nazwa1,
+    status: status1
+  });
+}
+function Notatka({ nazwa, status }: Notatki) {
   const [status1, ustawstatus] = useState(status);
   //if(status==false)ustawl(licznik+1);
   return (
-    <div><input type="checkbox" defaultChecked={status1} onChange={()=>ustawstatus(!status1)}></input>{nazwa}{status1 ? <span>TAK</span> : <span>NIE</span> }</div>
+    <div><input type="checkbox" defaultChecked={status1} onChange={()=>ustawstatus(!status1) }></input>{nazwa}{status1 ? <span>TAK</span> : <span>NIE</span> }</div>
   );
+function App() {
+  
 }
 const [licznik, ustawl] = useState(2);
   let notatki: Notatki[] = [];
@@ -51,9 +55,9 @@ const [licznik, ustawl] = useState(2);
 
 
 interface Notatki {
-  /**Nuer porządkowy */
+  /**status zadania*/
   status: boolean;
-  /**tytul */
+  /**Tresc */
   nazwa: string;
 }
 
